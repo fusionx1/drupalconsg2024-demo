@@ -1,0 +1,8 @@
+FROM nginx:1.24-alpine
+
+COPY nginx/default.conf /etc/nginx/conf.d/
+COPY drupal/web /var/www/html/web
+
+RUN set -x ; \
+  addgroup -g 82 -S www-data; \
+  adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
